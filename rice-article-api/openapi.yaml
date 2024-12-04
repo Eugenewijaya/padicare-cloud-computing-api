@@ -1,0 +1,38 @@
+swagger: '2.0'
+info:
+  title: Rice Articles API
+  description: API for retrieving rice articles
+  version: 1.0.0
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /articles:
+    get:
+      summary: Get all articles
+      operationId: getArticles
+      x-google-backend:
+        address: https://asia-southeast2-padi-care-1234.cloudfunctions.net/article-padicare
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not found
+  /article:
+    get:
+      summary: Get a specific article
+      operationId: getArticle
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: string
+      x-google-backend:
+        address: https://asia-southeast2-padi-care-1234.cloudfunctions.net/article-padicare
+      responses:
+        '200':
+          description: Successful response
+        '404':
+          description: Not found
+
